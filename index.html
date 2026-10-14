@@ -371,6 +371,19 @@
 
         .tasbeeh-btn:active { transform: scale(0.95); }
 
+        /* تنسيق عداد الزوار المخفي الخاص بالمسؤول */
+        .admin-visitor-box {
+            display: none; /* مخفي كلياً عن الزوار */
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
         footer {
             margin-top: auto;
             padding: 30px 15px;
@@ -583,13 +596,19 @@
 
     <!-- الفوتر -->
     <footer>
-        <p>© تطبيق شفاعة - صدقة جارية عن روح الشهيد بإذن الله <b>الوليد محمود القاسم</b> وجميع شهدائنا وموتانا المسلمين والمسلمات.</p>
+        <p id="footerCopy" style="cursor:pointer;" onclick="checkAdminClick()">© تطبيق شفاعة - صدقة جارية عن روح الشهيد بإذن الله <b>الوليد محمود القاسم</b> وجميع شهدائنا وموتانا المسلمين والمسلمات.</p>
+        
+        <!-- عداد الزوار المخفي الخاص بك -->
+        <div id="adminVisitorBox" class="admin-visitor-box">
+            📊 عدد الزيارات الكلي للموقع: <span id="visitorCountVal">جاري التحميل...</span>
+        </div>
     </footer>
 
     <script>
         let allSurahsList = [];
 
         window.onload = function() {
+            // جلب وتحميل السور
             fetch('https://api.alquran.cloud/v1/surah')
                 .then(response => response.json())
                 .then(data => {
@@ -597,7 +616,42 @@
                     populateSurahDropdown(allSurahsList);
                     fetchFullSurah();
                 });
+
+            // تسجيل وحساب الزيارة عبر API مجاني ومباشر
+            fetch('https://api.countapi.xyz/hit/shafaah-app-ro1ux/visits')
+                .then(res => res.json())
+                .then(res => {
+                    if(res && res.value) {
+                        document.getElementById('visitorCountVal').innerText = res.value;
+                    }
+                })
+                .catch(err => {
+                    // في حال كان السيرفر احتياطي
+                    document.getElementById('visitorCountVal').innerText = "نشط الآن";
+                });
+
+            // التحقق إذا كنت أنت تسجل دخول الإدارة من الرابط
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true' || localStorage.getItem('isShafaahAdmin') === 'true') {
+                showAdminStats();
+            }
         };
+
+        // تفعيل إظهار العداد بالضغط 3 مرات متتالية على حقوق الفوتر
+        let clickCount = 0;
+        function checkAdminClick() {
+            clickCount++;
+            if (clickCount >= 3) {
+                showAdminStats();
+                localStorage.setItem('isShafaahAdmin', 'true');
+                alert('🔓 مرحباً بك! تم تفعيل إظهار عداد الزوار لك.');
+                clickCount = 0;
+            }
+        }
+
+        function showAdminStats() {
+            document.getElementById('adminVisitorBox').style.display = 'inline-block';
+        }
 
         function populateSurahDropdown(surahs) {
             const dropdown = document.getElementById('surahDropdown');
