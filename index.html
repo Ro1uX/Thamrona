@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شفاعة | صدقة جارية عن الشهيد الوليد محمود القاسم</title>
-    <!-- استدعاء خطوط عربية فاخرة ومزخرفة -->
+    <title>شَفَاعَة | صدقة جارية عن الشهيد الوليد محمود القاسم</title>
+    <!-- استدعاء خطوط عربية إسلامية فاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Reem+Kufi:wght@500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-color: #ffffff;
-            --text-color: #0d0d0d;
-            --gray-bg: #fafafa;
-            --gray-border: #e8e8e8;
-            --accent-gray: #555555;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --text-color: #0a0a0a;
+            --gray-bg: #fcfcfc;
+            --gray-border: #1a1a1a;
+            --light-border: #e0e0e0;
+            --accent-gray: #4a4a4a;
+            --gold-accent: #000000;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
         }
 
         * {
@@ -29,8 +31,8 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.8;
-            padding: 20px 15px;
+            line-height: 1.9;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,25 +40,35 @@
             position: relative;
         }
 
-        /* الهيدر العلوي وشريط التنقل */
-        header {
-            text-align: center;
-            margin-top: 15px;
-            margin-bottom: 25px;
+        /* شريط علوي فاخر وثابت */
+        .top-navbar {
             width: 100%;
-            max-width: 650px;
-            position: relative;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
-        .menu-toggle-btn {
-            position: absolute;
-            top: 5px;
-            right: 0;
-            background: var(--gray-bg);
-            border: 1.5px solid var(--text-color);
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 0.9rem;
+        .nav-title {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .menu-open-btn {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: none;
+            padding: 7px 15px;
+            border-radius: 8px;
+            font-size: 0.88rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -65,14 +77,30 @@
             transition: all 0.2s ease;
         }
 
-        .menu-toggle-btn:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
+        .menu-open-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* الهيدر الرئيسي للموقع */
+        header {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 680px;
+            padding: 0 15px;
+        }
+
+        .bismillah {
+            font-family: 'Amiri Quran', serif;
+            font-size: 1.4rem;
+            color: var(--accent-gray);
+            margin-bottom: 10px;
         }
 
         .logo {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 4rem;
+            font-size: 4.2rem;
             font-weight: 800;
             color: var(--text-color);
             letter-spacing: -1px;
@@ -82,37 +110,63 @@
         .subtitle {
             font-size: 0.9rem;
             color: var(--accent-gray);
-            font-weight: 300;
+            font-weight: 400;
             margin-top: 6px;
         }
 
         /* الحاوية الرئيسية للتطبيق */
         .app-container {
             width: 100%;
-            max-width: 650px;
-            background-color: var(--bg-color);
-            border: 1.5px solid var(--text-color);
-            border-radius: 20px;
-            padding: 25px 20px;
-            box-shadow: var(--shadow);
+            max-width: 680px;
+            padding: 0 15px 40px 15px;
         }
 
-        /* بطاقة إهداء الميت والشهداء الرئيسية */
-        .shaheed-card {
-            background-color: var(--gray-bg);
+        /* الإطار الإسلامي الرئيسي للبطاقة */
+        .islamic-card {
+            background-color: var(--bg-color);
             border: 2px solid var(--text-color);
             border-radius: 16px;
-            padding: 25px 20px;
-            text-align: center;
-            margin-bottom: 25px;
+            padding: 28px 22px;
             position: relative;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        /* زخرفة زوايا الإطار */
+        .islamic-card::before {
+            content: "❖";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--bg-color);
+            padding: 0 8px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .islamic-card::after {
+            content: "❖";
+            position: absolute;
+            bottom: -12px;
+            left: 20px;
+            background: var(--bg-color);
+            padding: 0 8px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .shaheed-header {
+            text-align: center;
+            border-bottom: 1px double var(--text-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .shaheed-badge {
             display: inline-block;
             background-color: var(--text-color);
             color: var(--bg-color);
-            padding: 4px 14px;
+            padding: 4px 16px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -121,46 +175,50 @@
 
         .shaheed-name {
             font-family: 'Amiri', serif;
-            font-size: 2rem;
+            font-size: 2.3rem;
             font-weight: 700;
-            margin-bottom: 12px;
             color: var(--text-color);
+            line-height: 1.3;
         }
 
-        .shaheed-dua {
+        .text-body-dua {
             font-family: 'Amiri', serif;
-            font-size: 1.25rem;
-            line-height: 2.2;
+            font-size: 1.35rem;
+            line-height: 2.3;
             color: var(--text-color);
-            margin-bottom: 15px;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 20px;
         }
 
-        /* القائمة الجانبية (Drawer Sidebar) */
+        /* القائمة الجانبية (Drawer) */
         .sidebar-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             display: none;
-            z-index: 999;
+            z-index: 998;
+            backdrop-filter: blur(2px);
         }
 
         .sidebar {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 300px;
+            right: -340px;
+            width: 320px;
             height: 100%;
             background-color: var(--bg-color);
-            border-left: 2px solid var(--text-color);
-            z-index: 1000;
-            transition: right 0.3s ease;
-            padding: 30px 20px;
+            border-left: 3px solid var(--text-color);
+            z-index: 999;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 25px 20px;
             display: flex;
             flex-direction: column;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+            overflow-y: auto;
         }
 
         .sidebar.open {
@@ -171,7 +229,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid var(--text-color);
+            border-bottom: 2px solid var(--text-color);
             padding-bottom: 15px;
             margin-bottom: 20px;
         }
@@ -185,7 +243,7 @@
         .close-btn {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
             color: var(--text-color);
             font-weight: 700;
@@ -195,14 +253,14 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .menu-item-btn {
             width: 100%;
             padding: 14px 15px;
             background-color: var(--gray-bg);
-            border: 1px solid var(--gray-border);
+            border: 1px solid var(--light-border);
             border-radius: 12px;
             text-align: right;
             font-size: 0.95rem;
@@ -210,6 +268,9 @@
             color: var(--text-color);
             cursor: pointer;
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .menu-item-btn:hover, .menu-item-btn.active {
@@ -219,12 +280,18 @@
         }
 
         /* محتوى الأقسام */
+        .section-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
         .section-title {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--gray-border);
-            padding-bottom: 8px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: inline-block;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 5px;
         }
 
         .tab-content {
@@ -236,58 +303,68 @@
         }
 
         /* بطاقات الأذكار والآيات */
-        .card {
+        .item-card {
             background-color: var(--gray-bg);
-            border: 1px solid var(--gray-border);
+            border: 1px solid var(--light-border);
             border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 18px;
+            padding: 22px;
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .card-category {
-            font-size: 0.75rem;
+        .item-category {
+            font-size: 0.78rem;
             color: var(--accent-gray);
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: inline-block;
-            border: 1px solid var(--gray-border);
-            padding: 2px 8px;
+            border: 1px solid var(--light-border);
+            padding: 3px 10px;
             border-radius: 6px;
             background-color: #ffffff;
         }
 
-        .card-text {
-            font-size: 1.15rem;
-            color: var(--text-color);
-            line-height: 2;
-            margin-bottom: 12px;
-            font-family: 'Amiri', serif;
-        }
-
         .quran-text {
             font-family: 'Amiri Quran', serif;
-            font-size: 1.35rem;
-            line-height: 2.3;
+            font-size: 1.4rem;
+            line-height: 2.4;
             text-align: center;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .hadith-text, .dua-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            line-height: 2.2;
+            color: var(--text-color);
+            margin-bottom: 15px;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px dashed var(--gray-border);
+            border-top: 1px dashed var(--light-border);
             padding-top: 12px;
             margin-top: 10px;
         }
 
+        .source-tag {
+            font-size: 0.8rem;
+            color: var(--accent-gray);
+        }
+
         .btn-action {
             background: #ffffff;
-            border: 1px solid var(--gray-border);
-            padding: 6px 12px;
+            border: 1px solid var(--text-color);
+            padding: 7px 14px;
             border-radius: 8px;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 600;
             color: var(--text-color);
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-action:hover {
@@ -297,135 +374,214 @@
 
         footer {
             margin-top: auto;
-            padding-top: 40px;
-            padding-bottom: 20px;
-            font-size: 0.82rem;
+            padding: 30px 15px;
+            font-size: 0.85rem;
             color: var(--accent-gray);
             text-align: center;
+            border-top: 1px solid var(--light-border);
+            width: 100%;
+            background-color: var(--gray-bg);
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر -->
-    <header>
-        <button class="menu-toggle-btn" onclick="toggleSidebar()">
-            <span>☰</span> الأقسام والبركات
+    <!-- الشريط العلوي الثابت -->
+    <div class="top-navbar">
+        <span class="nav-title">🌙 شَفَاعَة</span>
+        <button class="menu-open-btn" onclick="toggleSidebar()">
+            <span>☰</span> الأقسام والمحتوى
         </button>
+    </div>
+
+    <!-- الهيدر الرئيسي -->
+    <header>
+        <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
         <h1 class="logo">شَفَاعَة</h1>
-        <p class="subtitle">صدقة جارية ونور من القرآن والسنة والأدعية</p>
+        <p class="subtitle">صدقة جارية ونورٌ من القرآن الكريم والسنة النبوية والأدعية المأثورة</p>
     </header>
 
-    <!-- القائمة الجانبية (Drawer) -->
+    <!-- القائمة الجانبية (Drawer Sidebar) -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h2 class="sidebar-title">قائمة شفاعة</h2>
+            <h2 class="sidebar-title">أقسام شفاعة</h2>
             <button class="close-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <ul class="menu-list">
-            <li><button class="menu-item-btn active" onclick="switchTab('mainHomeTab', this)">🏠 الدعاء للشهداء والواجهة</button></li>
-            <li><button class="menu-item-btn" onclick="switchTab('adhkarTab', this)">🤲 الأدعية والأذكار الشاملة</button></li>
-            <li><button class="menu-item-btn" onclick="switchTab('quranTab', this)">📖 القرآن الكريم (سور وآيات)</button></li>
-            <li><button class="menu-item-btn" onclick="switchTab('hadithTab', this)">📜 الأحاديث النبوية الشريفة</button></li>
+            <li><button class="menu-item-btn active" onclick="switchTab('homeTab', this)">🏠 الصفحة الرئيسية والدعاء <span>◀</span></button></li>
+            <li><button class="menu-item-btn" onclick="switchTab('quranTab', this)">📖 القرآن الكريم (سور كاملة) <span>◀</span></button></li>
+            <li><button class="menu-item-btn" onclick="switchTab('duaTab', this)">🤲 الأدعية والأذكار الشاملة <span>◀</span></button></li>
+            <li><button class="menu-item-btn" onclick="switchTab('hadithTab', this)">📜 الأحاديث النبوية الشريفة <span>◀</span></button></li>
         </ul>
     </div>
 
     <!-- الحاوية الرئيسية -->
     <main class="app-container">
 
-        <!-- 1. الواجهة الرئيسية والدعاء للشهيد والمسلمين -->
-        <div id="mainHomeTab" class="tab-content active">
-            <div class="shaheed-card">
-                <span class="shaheed-badge">صدقة جارية ودعاء مستجاب</span>
-                <h2 class="shaheed-name">الشهيد الوليد محمود القاسم</h2>
-                <p class="shaheed-dua">
-                    "اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالمَاءِ وَالثَّلْجِ وَالبَرَدِ، وَنَقِّهِ مِنَ الخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأَبْيَضَ مِنَ الدَّنَسِ.<br>
-                    اللَّهُمَّ ارْفَعْ دَرَجَتَهُ فِي المَهْدِيِّينَ، وَاخْلُفْهُ فِي عَقِبِهِ فِي الغَابِرِينَ، وَاغْفِرْ لَنَا وَلَهُ يَا رَبَّ العَالَمِينَ، وَافْسَحْ لَهُ فِي قَبْرِهِ وَنَوِّرْ لَهُ فِيهِ.<br>
-                    اللَّهُمَّ ارْحَمْ جَمِيعَ شُهَدَاءِ وَمَوْتَى المُسْلِمِينَ وَالمُسْلِمَاتِ الَّذِينَ شَهِدُوا لَكَ بِالتَّوْحِيدِ وَوَمَاتُوا عَلَى ذَلِكَ."
-                </p>
-                <button class="btn-action" style="padding: 10px 20px; font-weight: 600;" onclick="copyContent('mainDua')">📋 نسخ الدعاء للمشاركة</button>
-                <div id="mainDua" style="display:none;">اللهم اغفر للشهيد الوليد محمود القاسم ولجميع شهداء وموتى المسلمين والمسلمات وارحمهم بواسع رحمتك.</div>
-            </div>
-
-            <div style="text-align: center; color: var(--accent-gray); font-size: 0.9rem; margin-top: 15px;">
-                💡 <b>اضغط على زر (☰ الأقسام والبركات) بالجانب لتصفح باقي السور والأدعية والأحاديث.</b>
-            </div>
-        </div>
-
-        <!-- 2. قسم الأدعية والأذكار -->
-        <div id="adhkarTab" class="tab-content">
-            <h2 class="section-title">🤲 الأدعية والأذكار المأثورة</h2>
-            
-            <div class="card">
-                <span class="card-category">أدعية للموتى والشهداء</span>
-                <p class="card-text" id="dua1">اللَّهُمَّ أَنْزِلْ عَلَى قُبُورِ شُهَدَائِنَا وَمَوْتَانَا الضِّيَاءَ وَالنُّورَ وَالفَسْحَةَ وَالسُّرُورَ، اللَّهُمَّ جَازِهِمْ بِالحَسَنَاتِ إِحْسَانًا، وَبِالسَّيِّئَاتِ عَفْوًا وَغُفْرَانًا.</p>
-                <div class="card-footer">
-                    <button class="btn-action" onclick="copyContent('dua1')">📋 نسخ</button>
+        <!-- 1. الواجهة الرئيسية: إهداء ودعاء للشهيد والمسلمين -->
+        <div id="homeTab" class="tab-content active">
+            <div class="islamic-card">
+                <div class="shaheed-header">
+                    <span class="shaheed-badge">صدقة جارية ونور مستمر</span>
+                    <h2 class="shaheed-name">الشهيد الوليد محمود القاسم</h2>
+                    <p style="font-size:0.85rem; color:var(--accent-gray); margin-top:4px;">ولجميع شهداء وموتى المسلمين والمسلمات</p>
                 </div>
-            </div>
 
-            <div class="card">
-                <span class="card-category">أذكار الصباح والمساء</span>
-                <p class="card-text" id="dua2">أَصْبَحْنَا وَأَصْبَحَ المُلْكُ لِلَّهِ، وَالحَمْدُ لِلَّهِ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.</p>
-                <div class="card-footer">
-                    <button class="btn-action" onclick="copyContent('dua2')">📋 نسخ</button>
+                <div class="text-body-dua" id="mainDuaText">
+                    "اللَّهُمَّ اغْفِرْ لِلشَّهِيدِ <b>الْوَلِيدِ مَحْمُودِ الْقَاسِمِ</b> وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الْأَبْيَضَ مِنَ الدَّنَسِ.<br><br>
+                    اللَّهُمَّ أَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ، وَأَهْلًا خَيْرًا مِنْ أَهْلِهِ، وَأَدْخِلْهُ الْجَنَّةَ بغيرِ حِسَابٍ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ.<br><br>
+                    اللَّهُمَّ انْزِلْ عَلَى قَبْرِهِ وَقُبُورِ جَمِيعِ شُهَدَائِنَا وَمَوْتَى الْمُسْلِمِينَ وَالْمُسْلِمَاتِ الضِّيَاءَ وَالنُّورَ وَالْفَسْحَةَ وَالسُّرُورَ، وَاجْمَعْنَا بِهِمْ فِي جَنَّاتِ النَّعِيمِ يَا أَرْحَمَ الرَّاحِمِينَ."
+                </div>
+
+                <div style="text-align:center;">
+                    <button class="btn-action" style="padding:10px 22px; font-size:0.9rem;" onclick="copyText('mainDuaText')">📋 نسخ الدعاء للمشاركة</button>
                 </div>
             </div>
         </div>
 
-        <!-- 3. قسم سور وآيات القرآن الكريم -->
+        <!-- 2. قسم القرآن الكريم الشامل -->
         <div id="quranTab" class="tab-content">
-            <h2 class="section-title">📖 من سور وآيات القرآن الكريم</h2>
+            <div class="section-header">
+                <h2 class="section-title">📖 من سور وآيات القرآن الكريم</h2>
+            </div>
 
-            <div class="card">
-                <span class="card-category">سورة الفاتحة</span>
-                <p class="card-text quran-text" id="quran1">
+            <!-- سورة الفاتحة -->
+            <div class="item-card">
+                <span class="item-category">سورة الفاتحة (أم الكتاب)</span>
+                <p class="quran-text" id="q1">
                     بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾
                 </p>
                 <div class="card-footer">
-                    <button class="btn-action" onclick="copyContent('quran1')">📋 نسخ</button>
+                    <span class="source-tag">مكية - 7 آيات</span>
+                    <button class="btn-action" onclick="copyText('q1')">📋 نسخ السورة</button>
                 </div>
             </div>
 
-            <div class="card">
-                <span class="card-category">آية الكرسي</span>
-                <p class="card-text quran-text" id="quran2">
+            <!-- آية الكرسي -->
+            <div class="item-card">
+                <span class="item-category">آية الكرسي (أعظم آية في القرآن)</span>
+                <p class="quran-text" id="q2">
                     اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ
                 </p>
                 <div class="card-footer">
-                    <button class="btn-action" onclick="copyContent('quran2')">📋 نسخ</button>
+                    <span class="source-tag">سورة البقرة - آية 255</span>
+                    <button class="btn-action" onclick="copyText('q2')">📋 نسخ الآية</button>
+                </div>
+            </div>
+
+            <!-- سورة الملك (المنجية من عذاب القبر) -->
+            <div class="item-card">
+                <span class="item-category">سورة الملك (المنجية من عذاب القبر - بداية السورة)</span>
+                <p class="quran-text" id="q3">
+                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br>
+                    تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ﴿١﴾ الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا وَهُوَ الْعَزِيزُ الْغَفُورُ ﴿٢﴾ الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا مَّا تَرَى فِي خَلْقِ الرَّحْمَنِ مِن تَفَاوُتٍ فَارْجِعِ الْبَصَرَ هَلْ تَرَى مِن فُطُورٍ ﴿٣﴾
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">سورة الملك</span>
+                    <button class="btn-action" onclick="copyText('q3')">📋 نسخ الآيات</button>
+                </div>
+            </div>
+
+            <!-- سورة الإخلاص والمعوذتين -->
+            <div class="item-card">
+                <span class="item-category">سورة الإخلاص</span>
+                <p class="quran-text" id="q4">
+                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br>
+                    قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿٤﴾
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">تعدل ثلث القرآن</span>
+                    <button class="btn-action" onclick="copyText('q4')">📋 نسخ السورة</button>
                 </div>
             </div>
         </div>
 
-        <!-- 4. قسم الأحاديث النبوية -->
-        <div id="hadithTab" class="tab-content">
-            <h2 class="section-title">📜 أحاديث نبوية شريفة</h2>
+        <!-- 3. قسم الأدعية الشاملة -->
+        <div id="duaTab" class="tab-content">
+            <div class="section-header">
+                <h2 class="section-title">🤲 أدعية مأثورة وشاملة</h2>
+            </div>
 
-            <div class="card">
-                <span class="card-category">فضل الشهداء</span>
-                <p class="card-text" id="hadith1">«مَا مِنْ أَحَدٍ يَدْخُلُ الجَنَّةَ يُحِبُّ أَنْ يَرْجِعَ إِلَى الدُّنْيَا وَلَهُ مَا عَلَى الأَرْضِ مِنْ شَيْءٍ إِلاَّ الشَّهِيدُ، يَتَمَنَّى أَنْ يَرْجِعَ إِلَى الدُّنْيَا فَيُقْتَلَ عَشْرَ مَرَّاتٍ لِمَا يَرَى مِنَ الكَرَامَةِ.»</p>
+            <div class="item-card">
+                <span class="item-category">دعاء لجميع موتى وشهداء المسلمين</span>
+                <p class="dua-text" id="d1">
+                    "اللَّهُمَّ أَنْزِلْ عَلَى قُبُورِ مَوْتَانَا وَشُهَدَائِنَا الضِّيَاءَ وَالنُّورَ وَالْفَسْحَةَ وَالسُّرُورَ، اللَّهُمَّ جَازِهِمْ بِالْحَسَنَاتِ إِحْسَانًا وَبِالسَّيِّئَاتِ عَفْوًا وَغُفْرَانًا، اللَّهُمَّ افْتَحْ لَهُمْ أَبْوَابًا لَا تُسَدُّ إِلَى جَنَّاتِكَ."
+                </p>
                 <div class="card-footer">
-                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه البخاري ومسلم</span>
-                    <button class="btn-action" onclick="copyContent('hadith1')">📋 نسخ</button>
+                    <span class="source-tag">دعاء للموتى</span>
+                    <button class="btn-action" onclick="copyText('d1')">📋 نسخ</button>
                 </div>
             </div>
 
-            <div class="card">
-                <span class="card-category">الصدقة الجارية للميت</span>
-                <p class="card-text" id="hadith2">«إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ: إِلاَّ مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ.»</p>
+            <div class="item-card">
+                <span class="item-category">سيد الاستغفار</span>
+                <p class="dua-text" id="d2">
+                    "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ."
+                </p>
                 <div class="card-footer">
-                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه مسلم</span>
-                    <button class="btn-action" onclick="copyContent('hadith2')">📋 نسخ</button>
+                    <span class="source-tag">صحيح البخاري</span>
+                    <button class="btn-action" onclick="copyText('d2')">📋 نسخ</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">دعاء الثبات والتوفيق</span>
+                <p class="dua-text" id="d3">
+                    "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً إِنَّكَ أَنْتَ الْوَهَّابُ."
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">سورة آل عمران - آية 8</span>
+                    <button class="btn-action" onclick="copyText('d3')">📋 نسخ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. قسم الأحاديث النبوية الشريفة -->
+        <div id="hadithTab" class="tab-content">
+            <div class="section-header">
+                <h2 class="section-title">📜 أحاديث نبوية شريفة</h2>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">فضل الشهداء عند الله</span>
+                <p class="hadith-text" id="h1">
+                    عَنْ أَنَسِ بْنِ مَالِكٍ رَضِيَ اللَّهُ عَنْهُ، عَنِ النَّبِيِّ ﷺ قَالَ: «مَا مِنْ أَحَدٍ يَدْخُلُ الْجَنَّةَ يُحِبُّ أَنْ يَرْجِعَ إِلَى الدُّنْيَا وَلَهُ مَا عَلَى الْأَرْضِ مِنْ شَيْءٍ إِلَّا الشَّهِيدُ، يَتَمَنَّى أَنْ يَرْجِعَ إِلَى الدُّنْيَا فَيُقْتَلَ عَشْرَ مَرَّاتٍ لِمَا يَرَى مِنَ الْكَرَامَةِ.»
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">رواه البخاري ومسلم</span>
+                    <button class="btn-action" onclick="copyText('h1')">📋 نسخ الحديث</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">أجر الصدقة الجارية للميت</span>
+                <p class="hadith-text" id="h2">
+                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ: «إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ.»
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">رواه مسلم</span>
+                    <button class="btn-action" onclick="copyText('h2')">📋 نسخ الحديث</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">فضل الذكر والتسبيح</span>
+                <p class="hadith-text" id="h3">
+                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي الْمِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.»
+                </p>
+                <div class="card-footer">
+                    <span class="source-tag">متفق عليه</span>
+                    <button class="btn-action" onclick="copyText('h3')">📋 نسخ الحديث</button>
                 </div>
             </div>
         </div>
 
     </main>
 
+    <!-- الفوتر -->
     <footer>
-        <p>© تطبيق شفاعة - صدقة جارية عن روح الشهيد الوليد محمود القاسم والشهداء أجمعين</p>
+        <p>© تطبيق شفاعة - صدقة جارية عن روح الشهيد <b>الوليد محمود القاسم</b> وجميع شهدائنا وموتانا المسلمين والمسلمات.</p>
     </footer>
 
     <script>
@@ -443,7 +599,7 @@
             }
         }
 
-        // التنقل بين التبويبات وإغلاق القائمة بعد الاختيار
+        // التنقل بين الأقسام
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.menu-item-btn').forEach(el => el.classList.remove('active'));
@@ -451,11 +607,12 @@
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
             
-            toggleSidebar(); // إغلاق القائمة الجانبية تلقائياً
+            toggleSidebar(); // إغلاق القائمة بعد الاختيار
+            window.scrollTo({top: 0, behavior: 'smooth'}); // الصعود لأعلى
         }
 
-        // نسخ المحتوى
-        function copyContent(elementId) {
+        // نسخ النصوص
+        function copyText(elementId) {
             const text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text);
             alert('تم نسخ النص بنجاح ✨');
