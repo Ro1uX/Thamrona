@@ -73,23 +73,26 @@
         /* شريط التبويبات */
         .tabs {
             display: flex;
-            gap: 8px;
+            gap: 5px;
             margin-bottom: 25px;
             border-bottom: 1px solid var(--gray-border);
             padding-bottom: 12px;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
             flex: 1;
+            min-width: 110px;
             padding: 10px 5px;
             background: none;
             border: 1px solid transparent;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--accent-gray);
             cursor: pointer;
             transition: all 0.25s ease;
+            text-align: center;
         }
 
         .tab-btn:hover {
@@ -214,6 +217,27 @@
             background-color: var(--bg-color);
         }
 
+        /* تنسيق قسم كيف يعمل */
+        .how-it-works-box {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .how-it-works-box h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 5px;
+        }
+
+        .how-it-works-box p {
+            color: var(--accent-gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
         footer {
             margin-top: auto;
             padding-top: 50px;
@@ -237,13 +261,14 @@
             <button class="tab-btn active" onclick="switchTab('moneyTab', this)">زكاة المال</button>
             <button class="tab-btn" onclick="switchTab('goldTab', this)">الذهب والفضة</button>
             <button class="tab-btn" onclick="switchTab('charityTab', this)">حاسبة الصدقة</button>
+            <button class="tab-btn" onclick="switchTab('howItWorksTab', this)">❓ كيف يعمل؟</button>
         </div>
 
         <!-- 1. زكاة المال -->
         <div id="moneyTab" class="tab-content active">
             <div class="form-group">
                 <label for="moneyAmount">المبلغ النقدي المتروك لعام كامل:</label>
-                <input type="number" id="moneyAmount" placeholder="أدخل إجمالي المبلغ النقدية" min="0">
+                <input type="number" id="moneyAmount" placeholder="أدخل إجمالي المبلغ النقدي" min="0">
             </div>
 
             <div class="form-group">
@@ -307,7 +332,7 @@
                 <select id="charityPercent">
                     <option value="0.01">1% (تطوّع خفيف وبركة)</option>
                     <option value="0.025">2.5% (مقتدى بالزكاة)</option>
-                    <option value="0.05">5% (جود وإحسان)</option>
+                    <option value="0.05">5% (جود والإحسان)</option>
                     <option value="0.10">10% (سخاء وعطاء كريم)</option>
                 </select>
             </div>
@@ -319,6 +344,23 @@
                 <p class="result-value" id="charityVal">0</p>
                 <p class="status-msg">قال رسول الله ﷺ: «ما نقصت صدقة من مال»</p>
                 <button class="btn-copy" onclick="copyResult('charityVal')">📋 نسخ النتيجة</button>
+            </div>
+        </div>
+
+        <!-- 4. كيف يعمل؟ -->
+        <div id="howItWorksTab" class="tab-content">
+            <div class="how-it-works-box">
+                <h3>💡 ما هي زكاة المال؟</h3>
+                <p>هي ركن من أركان الإسلام، وتجب في المال المدخر الذي بلغ النصاب ومضى عليه عام كامل (حولان الحول)، ونسبتها الثابتة هي <b>2.5%</b> (أو القسمة على 40).</p>
+
+                <h3>⚖️ ما هو النصاب الشرعي؟</h3>
+                <p>النصاب هو الحد الأدنى الذي إذا ملكه المسلم وجبت عليه الزكاة، ويُقدر بقيمة <b>85 جراماً من الذهب الخالص</b> (عيار 24).</p>
+
+                <h3>🥇 زكاة الذهب والفضة</h3>
+                <p>تجب الزكاة في الذهب إذا بلغ 85 جراماً فأكثر، وفي الفضة إذا بلغت 595 جراماً فأكثر، وتُخرج بنسبة 2.5% إما عيناً أو قيمتها نقداً.</p>
+
+                <h3>🌱 الصدقات والخيرات</h3>
+                <p>هي أبواب تطوعية غير مفروضة، شرعها الله لزيادة البركة وتطهير النفس ودفع البلاء، ويمكن إخراجها بنسب اختيارية من الدخل المستمر.</p>
             </div>
         </div>
 
@@ -393,7 +435,6 @@
                 return;
             }
 
-            // تحويل الوزن لمعيار خالص لمعرفة النصاب
             let pureWeight = weight;
             if (type === 'gold21') pureWeight = weight * (21 / 24);
             if (type === 'gold18') pureWeight = weight * (18 / 24);
@@ -408,7 +449,6 @@
                 zakatCash = totalValue * 0.025;
                 resultVal.innerText = zakatCash.toLocaleString(undefined, {maximumFractionDigits: 2});
             } else {
-                // إذا لم يدخل السعر نعرض قيمة الزكاة بالجرامات
                 const zakatGrams = weight * 0.025;
                 resultVal.innerText = zakatGrams.toFixed(2) + ' جرام';
             }
@@ -448,4 +488,3 @@
     </script>
 </body>
 </html>
-
