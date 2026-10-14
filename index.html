@@ -1,1 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثمارنا | حاسبة الزكاة والصدقات</title>
+    <!-- استدعاء خطوط عربية فاخرة وأنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #0d0d0d;
+            --gray-bg: #f9f9f9;
+            --gray-border: #e2e2e2;
+            --accent-gray: #666666;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Readex Pro', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--accent-gray);
+            font-weight: 300;
+            margin-top: 5px;
+        }
+
+        /* الحاوية الرئيسية للتطبيق */
+        .app-container {
+            width: 100%;
+            max-width: 580px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--text-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        /* شريط التبويبات */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--gray-border);
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 5px;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent-gray);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-color);
+            background-color: var(--gray-bg);
+        }
+
+        .tab-btn.active {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            font-weight: 600;
+        }
+
+        /* محتوى التبويبات */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: var(--text-color);
+            background-color: #ffffff;
+        }
+
+        .note {
+            font-size: 0.78rem;
+            color: var(--accent-gray);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .btn-main {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-main:hover {
+            opacity: 0.88;
+        }
+
+        /* نتيجة الحساب */
+        .result-card {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--gray-bg);
+            border-radius: 12px;
+            border: 1px solid var(--gray-border);
+            text-align: center;
+            display: none;
+            position: relative;
+        }
+
+        .result-title {
+            font-size: 0.85rem;
+            color: var(--accent-gray);
+            margin-bottom: 6px;
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .status-msg {
+            font-size: 0.82rem;
+            color: var(--accent-gray);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--gray-border);
+        }
+
+        .btn-copy {
+            background: none;
+            border: 1px solid var(--gray-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-color);
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: var(--bg-color);
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 50px;
+            padding-bottom: 20px;
+            font-size: 0.82rem;
+            color: var(--accent-gray);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">ثمارنا</h1>
+        <p class="subtitle">حاسبة الزكاة والصدقات الإلكترونية</p>
+    </header>
+
+    <main class="app-container">
+        <!-- شريط النقل -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('moneyTab', this)">زكاة المال</button>
+            <button class="tab-btn" onclick="switchTab('goldTab', this)">الذهب والفضة</button>
+            <button class="tab-btn" onclick="switchTab('charityTab', this)">حاسبة الصدقة</button>
+        </div>
+
+        <!-- 1. زكاة المال -->
+        <div id="moneyTab" class="tab-content active">
+            <div class="form-group">
+                <label for="moneyAmount">المبلغ النقدي المتروك لعام كامل:</label>
+                <input type="number" id="moneyAmount" placeholder="أدخل إجمالي المبلغ النقدية" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="goldGramPrice">سعر جرام الذهب عيار 24 ببلدك (اختياري لمعرفة النصاب):</label>
+                <input type="number" id="goldGramPrice" placeholder="مثلاً: 60" min="0">
+                <p class="note">* النصاب الشرعي يوازي قيمة 85 جراماً من الذهب الخالص عيار 24.</p>
+            </div>
+
+            <button class="btn-main" onclick="calcMoneyZakat()">احسب زكاة المال</button>
+
+            <div class="result-card" id="moneyResultCard">
+                <p class="result-title">مقدار الزكاة الواجب إخراجها (2.5%)</p>
+                <p class="result-value" id="moneyZakatVal">0</p>
+                <p class="status-msg" id="moneyStatusMsg"></p>
+                <button class="btn-copy" onclick="copyResult('moneyZakatVal')">📋 نسخ النتيجة</button>
+            </div>
+        </div>
+
+        <!-- 2. زكاة الذهب والفضة -->
+        <div id="goldTab" class="tab-content">
+            <div class="form-group">
+                <label for="metalType">نوع المعدن النفيس:</label>
+                <select id="metalType" onchange="toggleGramsNote()">
+                    <option value="gold24">ذهب عيار 24</option>
+                    <option value="gold21">ذهب عيار 21</option>
+                    <option value="gold18">ذهب عيار 18</option>
+                    <option value="silver">فضة نقية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="weightGrams">الوزن الإجمالي بالجرام:</label>
+                <input type="number" id="weightGrams" placeholder="أدخل الوزن بالجرام" min="0">
+                <p class="note" id="metalNisabNote">* نصاب الذهب هو 85 جراماً من الذهب الخالص.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="metalPricePerGram">سعر الجرام اليوم (حسب العيار المختار):</label>
+                <input type="number" id="metalPricePerGram" placeholder="سعر الجرام بصلتك المحلية" min="0">
+            </div>
+
+            <button class="btn-main" onclick="calcMetalZakat()">احسب زكاة المعدن</button>
+
+            <div class="result-card" id="metalResultCard">
+                <p class="result-title">مقدار الزكاة الواجبة نقداً (2.5%)</p>
+                <p class="result-value" id="metalZakatVal">0</p>
+                <p class="status-msg" id="metalStatusMsg"></p>
+                <button class="btn-copy" onclick="copyResult('metalZakatVal')">📋 نسخ النتيجة</button>
+            </div>
+        </div>
+
+        <!-- 3. حاسبة الصدقات -->
+        <div id="charityTab" class="tab-content">
+            <div class="form-group">
+                <label for="incomeAmount">دخل أو راتب مستمر (شهري / أسبوعي):</label>
+                <input type="number" id="incomeAmount" placeholder="أدخل مبلغ الدخل" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="charityPercent">نسبة الصدقة المرغوبة:</label>
+                <select id="charityPercent">
+                    <option value="0.01">1% (تطوّع خفيف وبركة)</option>
+                    <option value="0.025">2.5% (مقتدى بالزكاة)</option>
+                    <option value="0.05">5% (جود وإحسان)</option>
+                    <option value="0.10">10% (سخاء وعطاء كريم)</option>
+                </select>
+            </div>
+
+            <button class="btn-main" onclick="calcCharity()">احسب مقدار الصدقة</button>
+
+            <div class="result-card" id="charityResultCard">
+                <p class="result-title">مقدار الصدقة المقترحة للخروج بها</p>
+                <p class="result-value" id="charityVal">0</p>
+                <p class="status-msg">قال رسول الله ﷺ: «ما نقصت صدقة من مال»</p>
+                <button class="btn-copy" onclick="copyResult('charityVal')">📋 نسخ النتيجة</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© ثمارنا - قال تعالى: {وَمَا أَنفَقْتُم مِّن شَيْءٍ فَهُوَ يُخْلِفُهُ}</p>
+    </footer>
+
+    <script>
+        // التنقل بين التبويبات
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // ملاحظة النصاب حسب المعدن
+        function toggleGramsNote() {
+            const type = document.getElementById('metalType').value;
+            const note = document.getElementById('metalNisabNote');
+            if (type.startsWith('gold')) {
+                note.innerText = '* نصاب الذهب هو 85 جراماً من الذهب الخالص (عيار 24).';
+            } else {
+                note.innerText = '* نصاب الفضة هو 595 جراماً من الفضة النقية.';
+            }
+        }
+
+        // 1. حساب زكاة المال
+        function calcMoneyZakat() {
+            const amount = parseFloat(document.getElementById('moneyAmount').value);
+            const goldPrice = parseFloat(document.getElementById('goldGramPrice').value);
+            const resultCard = document.getElementById('moneyResultCard');
+            const resultVal = document.getElementById('moneyZakatVal');
+            const statusMsg = document.getElementById('moneyStatusMsg');
+
+            if (isNaN(amount) || amount <= 0) {
+                alert('يرجى إدخال مبلغ مالي صحيح.');
+                return;
+            }
+
+            const zakat = amount * 0.025;
+            resultVal.innerText = zakat.toLocaleString(undefined, {maximumFractionDigits: 2});
+
+            if (!isNaN(goldPrice) && goldPrice > 0) {
+                const nisab = goldPrice * 85;
+                if (amount >= nisab) {
+                    statusMsg.innerHTML = `بلغ النصاب الشرعي (النصاب التقديري: <b>${nisab.toLocaleString()}</b>).`;
+                } else {
+                    statusMsg.innerHTML = `لم يبلغ النصاب الشرعي بعد (النصاب التقديري: <b>${nisab.toLocaleString()}</b>). الزكاة اختيارية كتطوع.`;
+                }
+            } else {
+                statusMsg.innerText = 'تم حساب قيمة الزكاة (2.5%) بناءً على المبلغ المدخل.';
+            }
+
+            resultCard.style.display = 'block';
+        }
+
+        // 2. حساب زكاة الذهب والفضة
+        function calcMetalZakat() {
+            const type = document.getElementById('metalType').value;
+            const weight = parseFloat(document.getElementById('weightGrams').value);
+            const price = parseFloat(document.getElementById('metalPricePerGram').value);
+            const resultCard = document.getElementById('metalResultCard');
+            const resultVal = document.getElementById('metalZakatVal');
+            const statusMsg = document.getElementById('metalStatusMsg');
+
+            if (isNaN(weight) || weight <= 0) {
+                alert('يرجى إدخال الوزن بالجرام بشكل صحيح.');
+                return;
+            }
+
+            // تحويل الوزن لمعيار خالص لمعرفة النصاب
+            let pureWeight = weight;
+            if (type === 'gold21') pureWeight = weight * (21 / 24);
+            if (type === 'gold18') pureWeight = weight * (18 / 24);
+
+            let isNisabReached = false;
+            if (type.startsWith('gold') && pureWeight >= 85) isNisabReached = true;
+            if (type === 'silver' && weight >= 595) isNisabReached = true;
+
+            let zakatCash = 0;
+            if (!isNaN(price) && price > 0) {
+                const totalValue = weight * price;
+                zakatCash = totalValue * 0.025;
+                resultVal.innerText = zakatCash.toLocaleString(undefined, {maximumFractionDigits: 2});
+            } else {
+                // إذا لم يدخل السعر نعرض قيمة الزكاة بالجرامات
+                const zakatGrams = weight * 0.025;
+                resultVal.innerText = zakatGrams.toFixed(2) + ' جرام';
+            }
+
+            if (isNisabReached) {
+                statusMsg.innerHTML = 'الوزن يبلغ النصاب الشرعي أو يتجاوزه، وتجب فيه الزكاة.';
+            } else {
+                statusMsg.innerHTML = 'الوزن أقل من النصاب الشرعي المحدد لمعدن هذا الصنف.';
+            }
+
+            resultCard.style.display = 'block';
+        }
+
+        // 3. حساب الصدقة
+        function calcCharity() {
+            const income = parseFloat(document.getElementById('incomeAmount').value);
+            const percent = parseFloat(document.getElementById('charityPercent').value);
+            const resultCard = document.getElementById('charityResultCard');
+            const resultVal = document.getElementById('charityVal');
+
+            if (isNaN(income) || income <= 0) {
+                alert('يرجى إدخال المبلغ بشكل صحيح.');
+                return;
+            }
+
+            const charity = income * percent;
+            resultVal.innerText = charity.toLocaleString(undefined, {maximumFractionDigits: 2});
+            resultCard.style.display = 'block';
+        }
+
+        // نسخ النتيجة
+        function copyResult(elementId) {
+            const val = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(val);
+            alert('تم نسخ النتيجة بنجاح: ' + val);
+        }
+    </script>
+</body>
+</html>
 
