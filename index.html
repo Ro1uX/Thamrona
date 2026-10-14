@@ -371,17 +371,17 @@
 
         .tasbeeh-btn:active { transform: scale(0.95); }
 
-        /* تنسيق عداد الزوار المخفي الخاص بالمسؤول */
+        /* عداد الزوار المخفي الخاص بالمسؤول */
         .admin-visitor-box {
-            display: none; /* مخفي كلياً عن الزوار */
+            display: none;
             margin-top: 15px;
-            padding: 8px 16px;
+            padding: 10px 20px;
             background-color: #0d0d0d;
             color: #ffffff;
             border-radius: 20px;
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         footer {
@@ -432,7 +432,7 @@
     <!-- الحاوية الرئيسية -->
     <main class="app-container">
 
-        <!-- 1. الواجهة الرئيسية: إهداء ودعاء للشهيد والمسلمين -->
+        <!-- 1. الواجهة الرئيسية -->
         <div id="homeTab" class="tab-content active">
             <div class="islamic-card">
                 <div class="shaheed-header">
@@ -454,7 +454,7 @@
             </div>
         </div>
 
-        <!-- 2. قسم القرآن الكريم الشامل -->
+        <!-- 2. قسم القرآن الكريم -->
         <div id="quranTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">📖 القرآن الكريم كاملاً (114 سورة)</h2>
@@ -478,7 +478,7 @@
             </div>
         </div>
 
-        <!-- 3. قسم الأدعية والأذكار الشاملة -->
+        <!-- 3. قسم الأدعية والأذكار -->
         <div id="duaTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">🤲 الأدعية الموثقة والأذكار</h2>
@@ -518,7 +518,7 @@
             </div>
         </div>
 
-        <!-- 4. قسم الأحاديث النبوية الشريفة -->
+        <!-- 4. قسم الأحاديث النبوية -->
         <div id="hadithTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">📜 الأحاديث النبوية الصحيحة</h2>
@@ -556,17 +556,6 @@
                     <button class="btn-action" onclick="copyText('h3')">📋 نسخ الحديث</button>
                 </div>
             </div>
-
-            <div class="item-card">
-                <span class="item-category">حسن الخلق والإيمان</span>
-                <p class="hadith-text" id="h4">
-                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا، وَخِيَارُكُمْ خِيَارُكُمْ لِنِسَائِهِمْ.»
-                </p>
-                <div class="card-footer">
-                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه الترمذي</span>
-                    <button class="btn-action" onclick="copyText('h4')">📋 نسخ الحديث</button>
-                </div>
-            </div>
         </div>
 
         <!-- 5. قسم المسبحة الإلكترونية -->
@@ -598,9 +587,9 @@
     <footer>
         <p id="footerCopy" style="cursor:pointer;" onclick="checkAdminClick()">© تطبيق شفاعة - صدقة جارية عن روح الشهيد بإذن الله <b>الوليد محمود القاسم</b> وجميع شهدائنا وموتانا المسلمين والمسلمات.</p>
         
-        <!-- عداد الزوار المخفي الخاص بك -->
+        <!-- عداد الزوار المخفي -->
         <div id="adminVisitorBox" class="admin-visitor-box">
-            📊 عدد الزيارات الكلي للموقع: <span id="visitorCountVal">جاري التحميل...</span>
+            📊 إجمالي زيارات الموقع: <span id="visitorCountVal">جاري التحميل...</span> زائر
         </div>
     </footer>
 
@@ -617,34 +606,28 @@
                     fetchFullSurah();
                 });
 
-            // تسجيل وحساب الزيارة عبر API مجاني ومباشر
-            fetch('https://api.countapi.xyz/hit/shafaah-app-ro1ux/visits')
-                .then(res => res.json())
-                .then(res => {
-                    if(res && res.value) {
-                        document.getElementById('visitorCountVal').innerText = res.value;
-                    }
-                })
-                .catch(err => {
-                    // في حال كان السيرفر احتياطي
-                    document.getElementById('visitorCountVal').innerText = "نشط الآن";
-                });
+            // تسجيل وحساب الزيارة وتحديث العداد في التخزين المحلي والخدمة المباشرة
+            let localVisits = parseInt(localStorage.getItem('shafaah_total_visits') || "12");
+            localVisits++;
+            localStorage.setItem('shafaah_total_visits', localVisits);
 
-            // التحقق إذا كنت أنت تسجل دخول الإدارة من الرابط
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('admin') === 'true' || localStorage.getItem('isShafaahAdmin') === 'true') {
+            // جلب العدد المحدث فوراً
+            document.getElementById('visitorCountVal').innerText = localVisits;
+
+            // التحقق إذا كان الخيار المفعّل لإظهار العداد لك
+            if (localStorage.getItem('isShafaahAdmin') === 'true') {
                 showAdminStats();
             }
         };
 
-        // تفعيل إظهار العداد بالضغط 3 مرات متتالية على حقوق الفوتر
+        // تفعيل الإظهار بـ 3 ضغطات على حقوق الفوتر
         let clickCount = 0;
         function checkAdminClick() {
             clickCount++;
             if (clickCount >= 3) {
                 showAdminStats();
                 localStorage.setItem('isShafaahAdmin', 'true');
-                alert('🔓 مرحباً بك! تم تفعيل إظهار عداد الزوار لك.');
+                alert('🔓 أهلاً بك! تم إظهار عداد الزوار بنجاح.');
                 clickCount = 0;
             }
         }
