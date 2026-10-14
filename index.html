@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شَفَاعَة | صدقة جارية عن الشهيد الوليد محمود القاسم</title>
-    <!-- استدعاء الخطوط العربية والإسلامية -->
+    <title>شَفَاعَة | تطبيق إسلامي شامل - صدقة جارية عن الشهيد الوليد محمود القاسم</title>
+    <!-- استدعاء خطوط إسلامية فاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Reem+Kufi:wght@500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: rgba(255, 255, 255, 0.95);
-            --text-color: #0a0a0a;
-            --card-bg: rgba(250, 250, 250, 0.96);
-            --light-border: #d0d0d0;
+            --bg-color: rgba(255, 255, 255, 0.94);
+            --text-color: #0d0d0d;
+            --card-bg: rgba(255, 255, 255, 0.97);
+            --light-border: #d2d2d2;
             --accent-gray: #4a4a4a;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -27,8 +27,8 @@
         }
 
         body {
-            /* خلفية مسجد فاخرة وهادئة */
-            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+            /* خلفية مسجد فاخرة وواضحة بطبقة شفافة مريحة للعين */
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
                         url('https://images.unsplash.com/photo-1542816417-0983cbe82752?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-color);
@@ -52,7 +52,7 @@
             position: sticky;
             top: 0;
             z-index: 900;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
         }
 
         .nav-title {
@@ -75,13 +75,12 @@
             gap: 6px;
         }
 
-        /* الهيدر الرئيسي */
         header {
             text-align: center;
             margin-top: 25px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 720px;
+            max-width: 750px;
             padding: 0 15px;
         }
 
@@ -107,14 +106,12 @@
             margin-top: 6px;
         }
 
-        /* الحاوية الرئيسية */
         .app-container {
             width: 100%;
-            max-width: 720px;
+            max-width: 750px;
             padding: 0 15px 40px 15px;
         }
 
-        /* الإطار الإسلامي الرئيسي للبطاقة */
         .islamic-card {
             background-color: var(--card-bg);
             border: 2px solid var(--text-color);
@@ -160,7 +157,7 @@
         }
 
         /* أدوات السور والبحث */
-        .surah-select, .search-box {
+        .search-box, .surah-select {
             width: 100%;
             padding: 13px 16px;
             border: 1.5px solid var(--text-color);
@@ -168,7 +165,7 @@
             font-size: 1rem;
             background-color: #ffffff;
             color: var(--text-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             outline: none;
         }
 
@@ -201,9 +198,7 @@
             overflow-y: auto;
         }
 
-        .sidebar.open {
-            right: 0;
-        }
+        .sidebar.open { right: 0; }
 
         .sidebar-header {
             display: flex;
@@ -258,7 +253,6 @@
             border-color: var(--text-color);
         }
 
-        /* محتوى الأقسام */
         .section-header {
             text-align: center;
             margin-bottom: 25px;
@@ -273,15 +267,9 @@
             padding-bottom: 5px;
         }
 
-        .tab-content {
-            display: none;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        /* البطاقات */
         .item-card {
             background-color: var(--card-bg);
             border: 1px solid var(--light-border);
@@ -304,11 +292,12 @@
 
         .quran-text {
             font-family: 'Amiri Quran', serif;
-            font-size: 1.4rem;
-            line-height: 2.4;
+            font-size: 1.45rem;
+            line-height: 2.5;
             text-align: center;
             color: var(--text-color);
             margin-bottom: 15px;
+            word-spacing: 2px;
         }
 
         .hadith-text, .dua-text {
@@ -352,7 +341,6 @@
             border: none;
         }
 
-        /* المسبحة الإلكترونية */
         .tasbeeh-container {
             text-align: center;
             padding: 25px 20px;
@@ -379,19 +367,7 @@
             cursor: pointer;
         }
 
-        .tasbeeh-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* مشغل الصوتيات للقرآن */
-        .audio-player-card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--text-color);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
+        .tasbeeh-btn:active { transform: scale(0.95); }
 
         footer {
             margin-top: auto;
@@ -409,7 +385,7 @@
 
     <!-- الشريط العلوي الثابت -->
     <div class="top-navbar">
-        <span class="nav-title">🌙 شَفَاعَة</span>
+        <span class="nav-title">🕌 شَفَاعَة</span>
         <button class="menu-open-btn" onclick="toggleSidebar()">
             <span>☰</span> الأقسام والميزات
         </button>
@@ -431,8 +407,7 @@
         </div>
         <ul class="menu-list">
             <li><button class="menu-item-btn active" onclick="switchTab('homeTab', this)">🏠 الصفحة الرئيسية والدعاء <span>◀</span></button></li>
-            <li><button class="menu-item-btn" onclick="switchTab('quranTab', this)">📖 القرآن الكريم وسوره <span>◀</span></button></li>
-            <li><button class="menu-item-btn" onclick="switchTab('audioTab', this)">🎧 استماع للقرآن الكريم <span>◀</span></button></li>
+            <li><button class="menu-item-btn" onclick="switchTab('quranTab', this)">📖 القرآن الكريم (114 سورة كاملة) <span>◀</span></button></li>
             <li><button class="menu-item-btn" onclick="switchTab('duaTab', this)">🤲 الأدعية والأذكار الشاملة <span>◀</span></button></li>
             <li><button class="menu-item-btn" onclick="switchTab('hadithTab', this)">📜 الأحاديث النبوية الشريفة <span>◀</span></button></li>
             <li><button class="menu-item-btn" onclick="switchTab('tasbeehTab', this)">📿 المسبحة الإلكترونية <span>◀</span></button></li>
@@ -464,27 +439,24 @@
             </div>
         </div>
 
-        <!-- 2. قسم القرآن الكريم الشامل -->
+        <!-- 2. قسم القرآن الكريم الشامل (114 سورة كاملة مع محرك بحث) -->
         <div id="quranTab" class="tab-content">
             <div class="section-header">
-                <h2 class="section-title">📖 فهرس وسور القرآن الكريم</h2>
+                <h2 class="section-title">📖 القرآن الكريم كاملاً (114 سورة)</h2>
             </div>
 
-            <label for="surahDropdown" style="font-size:0.9rem; font-weight:600; margin-bottom:6px; display:block;">اختر أي سورة من القائمة ليتم عرضها فوراً:</label>
-            <select id="surahDropdown" class="surah-select" onchange="displaySurahContent()">
-                <option value="1">1. سورة الفاتحة (مكية)</option>
-                <option value="2">2. سورة البقرة (بداية السورة - مدنية)</option>
-                <option value="36">36. سورة يس (مكية)</option>
-                <option value="67">67. سورة الملك (المنجية من عذاب القبر - مكية)</option>
-                <option value="112">112. سورة الإخلاص (مكية)</option>
-                <option value="113">113. سورة الفلق (مكية)</option>
-                <option value="114">114. سورة الناس (مكية)</option>
+            <!-- أذونة وحقل البحث عن السورة -->
+            <input type="text" id="surahSearchInput" class="search-box" placeholder="🔍 اكتب اسم السورة للبحث السريع (مثلاً: يس، الملك، الكهف)..." onkeyup="filterSurahDropdown()">
+
+            <label for="surahDropdown" style="font-size:0.9rem; font-weight:600; margin-bottom:6px; display:block;">اختر السورة لعرض آياتها كاملة:</label>
+            <select id="surahDropdown" class="surah-select" onchange="fetchFullSurah()">
+                <!-- سيتم تحميل الـ 114 سورة تلقائياً بالكامل -->
             </select>
 
             <div class="item-card">
-                <span class="item-category" id="surahInfoTag">سورة الفاتحة - مكية</span>
+                <span class="item-category" id="surahInfoTag">جاري تحميل السورة...</span>
                 <p class="quran-text" id="surahDisplayArea">
-                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾
+                    يرجى الانتظار لحظات لجلب السورة المباركة...
                 </p>
                 <div class="card-footer">
                     <button class="btn-action" onclick="copyText('surahDisplayArea')">📋 نسخ السورة</button>
@@ -493,81 +465,109 @@
             </div>
         </div>
 
-        <!-- 3. قسم الاستماع للقرآن الكريم (مشغل الصوت) -->
-        <div id="audioTab" class="tab-content">
-            <div class="section-header">
-                <h2 class="section-title">🎧 استماع للقرآن الكريم</h2>
-            </div>
-
-            <div class="audio-player-card">
-                <h3 style="margin-bottom:12px; font-family:'Amiri', serif;">سورة الملك بصوت خاشع</h3>
-                <audio controls style="width:100%; border-radius:10px;">
-                    <source src="https://server11.mp3quran.net/yasser/067.mp3" type="audio/mpeg">
-                    متصفحك لا يدعم مشغل الصوت.
-                </audio>
-            </div>
-
-            <div class="audio-player-card">
-                <h3 style="margin-bottom:12px; font-family:'Amiri', serif;">سورة يس (تلاوة مباركة)</h3>
-                <audio controls style="width:100%; border-radius:10px;">
-                    <source src="https://server11.mp3quran.net/yasser/036.mp3" type="audio/mpeg">
-                    متصفحك لا يدعم مشغل الصوت.
-                </audio>
-            </div>
-        </div>
-
-        <!-- 4. قسم الأدعية الموثقة والأذكار -->
+        <!-- 3. قسم الأدعية والأذكار الشاملة -->
         <div id="duaTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">🤲 الأدعية الموثقة والأذكار</h2>
             </div>
 
-            <input type="text" id="duaSearchInput" class="search-box" placeholder="🔍 ابحث في الأدعية والأذكار..." onkeyup="filterDuas()">
-
-            <div id="duaListContainer">
-                <div class="item-card dua-item">
-                    <span class="item-category">دعاء لجميع موتى وشهداء المسلمين</span>
-                    <p class="dua-text" id="d1">
-                        "اللَّهُمَّ أَنْزِلْ عَلَى قُبُورِ مَوْتَانَا وَشُهَدَائِنَا الضِّيَاءَ وَالنُّورَ وَالْفَسْحَةَ وَالسُّرُورَ، اللَّهُمَّ جَازِهِمْ بِالْحَسَنَاتِ إِحْسَانًا وَبِالسَّيِّئَاتِ عَفْوًا وَغُفْرَانًا."
-                    </p>
-                    <div class="card-footer">
-                        <button class="btn-action" onclick="copyText('d1')">📋 نسخ</button>
-                        <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('d1')">💬 مشاركة</button>
-                    </div>
+            <div class="item-card">
+                <span class="item-category">دعاء لجميع موتى وشهداء المسلمين</span>
+                <p class="dua-text" id="d1">
+                    "اللَّهُمَّ أَنْزِلْ عَلَى قُبُورِ مَوْتَانَا وَشُهَدَائِنَا الضِّيَاءَ وَالنُّورَ وَالْفَسْحَةَ وَالسُّرُورَ، اللَّهُمَّ جَازِهِمْ بِالْحَسَنَاتِ إِحْسَانًا وَبِالسَّيِّئَاتِ عَفْوًا وَغُفْرَانًا."
+                </p>
+                <div class="card-footer">
+                    <button class="btn-action" onclick="copyText('d1')">📋 نسخ</button>
+                    <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('d1')">💬 مشاركة</button>
                 </div>
+            </div>
 
-                <div class="item-card dua-item">
-                    <span class="item-category">سيد الاستغفار</span>
-                    <p class="dua-text" id="d2">
-                        "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ."
-                    </p>
-                    <div class="card-footer">
-                        <button class="btn-action" onclick="copyText('d2')">📋 نسخ</button>
-                        <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('d2')">💬 مشاركة</button>
-                    </div>
+            <div class="item-card">
+                <span class="item-category">سيد الاستغفار</span>
+                <p class="dua-text" id="d2">
+                    "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ."
+                </p>
+                <div class="card-footer">
+                    <button class="btn-action" onclick="copyText('d2')">📋 نسخ</button>
+                    <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('d2')">💬 مشاركة</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">دعاء الكرب والفرج</span>
+                <p class="dua-text" id="d3">
+                    "لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ."
+                </p>
+                <div class="card-footer">
+                    <button class="btn-action" onclick="copyText('d3')">📋 نسخ</button>
+                    <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('d3')">💬 مشاركة</button>
                 </div>
             </div>
         </div>
 
-        <!-- 5. قسم الأحاديث النبوية الشريفة -->
+        <!-- 4. قسم الأحاديث النبوية الشريفة (شامل ومفتوح كلياً بدون أذونة بحث) -->
         <div id="hadithTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">📜 الأحاديث النبوية الصحيحة</h2>
             </div>
 
             <div class="item-card">
-                <span class="item-category">فضل الشهداء</span>
+                <span class="item-category">فضل الشهداء عند الله</span>
                 <p class="hadith-text" id="h1">
                     عَنْ أَنَسِ بْنِ مَالِكٍ رَضِيَ اللَّهُ عَنْهُ، عَنِ النَّبِيِّ ﷺ قَالَ: «مَا مِنْ أَحَدٍ يَدْخُلُ الْجَنَّةَ يُحِبُّ أَنْ يَرْجِعَ إِلَى الدُّنْيَا وَلَهُ مَا عَلَى الْأَرْضِ مِنْ شَيْءٍ إِلَّا الشَّهِيدُ، يَتَمَنَّى أَنْ يَرْجِعَ إِلَى الدُّنْيَا فَيُقْتَلَ عَشْرَ مَرَّاتٍ لِمَا يَرَى مِنَ الْكَرَامَةِ.»
                 </p>
                 <div class="card-footer">
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه البخاري ومسلم</span>
                     <button class="btn-action" onclick="copyText('h1')">📋 نسخ الحديث</button>
-                    <button class="btn-action btn-whatsapp" onclick="shareWhatsApp('h1')">💬 مشاركة</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">الصدقة الجارية للميت</span>
+                <p class="hadith-text" id="h2">
+                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ: «إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ.»
+                </p>
+                <div class="card-footer">
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه مسلم</span>
+                    <button class="btn-action" onclick="copyText('h2')">📋 نسخ الحديث</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">فضل الذكر والتسبيح</span>
+                <p class="hadith-text" id="h3">
+                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي الْمِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.»
+                </p>
+                <div class="card-footer">
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">متفق عليه</span>
+                    <button class="btn-action" onclick="copyText('h3')">📋 نسخ الحديث</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">حسن الخلق والإيمان</span>
+                <p class="hadith-text" id="h4">
+                    عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا، وَخِيَارُكُمْ خِيَارُكُمْ لِنِسَائِهِمْ.»
+                </p>
+                <div class="card-footer">
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه الترمذي (حديث حسن صحيح)</span>
+                    <button class="btn-action" onclick="copyText('h4')">📋 نسخ الحديث</button>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <span class="item-category">جوامع الكلم والدعاء</span>
+                <p class="hadith-text" id="h5">
+                    عَنْ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا قَالَتْ: كَانَ رَسُولُ اللَّهِ ﷺ يَسْتَحِبُّ الْجَوَامِعَ مِنَ الدُّعَاءِ، وَيَدَعُ مَا سِوَى ذَلِكَ.
+                </p>
+                <div class="card-footer">
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه أبو داود</span>
+                    <button class="btn-action" onclick="copyText('h5')">📋 نسخ الحديث</button>
                 </div>
             </div>
         </div>
 
-        <!-- 6. قسم المسبحة الإلكترونية المتطورة -->
+        <!-- 5. قسم المسبحة الإلكترونية -->
         <div id="tasbeehTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">📿 المسبحة الإلكترونية</h2>
@@ -598,29 +598,72 @@
     </footer>
 
     <script>
-        const surahsData = {
-            "1": { name: "سورة الفاتحة - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾" },
-            "2": { name: "سورة البقرة (بداية السورة)", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> الم ﴿١﴾ ذَلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ ﴿٢﴾ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَ ﴿٣﴾" },
-            "36": { name: "سورة يس - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> يس ﴿١﴾ وَالْقُرْآنِ الْحَكِيمِ ﴿٢﴾ إِنَّكَ لَمِنَ الْمُرْسَلِينَ ﴿٣﴾ عَلَى صِرَاطٍ مُسْتَقِيمٍ ﴿٤﴾" },
-            "67": { name: "سورة الملك - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ﴿١﴾ الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا وَهُوَ الْعَزِيزُ الْغَفُورُ ﴿٢﴾" },
-            "112": { name: "سورة الإخلاص - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿٤﴾" },
-            "113": { name: "سورة الفلق - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿١﴾ مِن شَرِّ مَا خَلَقَ ﴿٢﴾ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿٣﴾" },
-            "114": { name: "سورة الناس - مكية", text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br> قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿١﴾ مَلِكِ النَّاسِ ﴿٢﴾ إِلَهِ النَّاسِ ﴿٣﴾ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿٤﴾" }
+        let allSurahsList = [];
+
+        // تحميل قائمة الـ 114 سورة بالكامل عند فتح الموقع
+        window.onload = function() {
+            fetch('https://api.alquran.cloud/v1/surah')
+                .then(response => response.json())
+                .then(data => {
+                    allSurahsList = data.data;
+                    populateSurahDropdown(allSurahsList);
+                    fetchFullSurah(); // تحميل السورة الأولى تلقائياً
+                });
         };
 
-        function displaySurahContent() {
-            const val = document.getElementById('surahDropdown').value;
-            if(surahsData[val]) {
-                document.getElementById('surahInfoTag').innerText = surahsData[val].name;
-                document.getElementById('surahDisplayArea').innerHTML = surahsData[val].text;
+        function populateSurahDropdown(surahs) {
+            const dropdown = document.getElementById('surahDropdown');
+            dropdown.innerHTML = '';
+            surahs.forEach(surah => {
+                const option = document.createElement('option');
+                option.value = surah.number;
+                option.text = `${surah.number}. سورة ${surah.name} (${surah.revelationType === 'Meccan' ? 'مكية' : 'مدنية'}) - ${surah.numberOfAyahs} آية`;
+                dropdown.appendChild(option);
+            });
+        }
+
+        // البحث الفوري في أسماء السور
+        function filterSurahDropdown() {
+            const query = document.getElementById('surahSearchInput').value.trim().toLowerCase();
+            const filtered = allSurahsList.filter(surah => surah.name.toLowerCase().includes(query) || surah.number.toString() === query);
+            populateSurahDropdown(filtered);
+            if(filtered.length > 0) {
+                fetchFullSurah();
             }
         }
 
-        function filterDuas() {
-            const query = document.getElementById('duaSearchInput').value.toLowerCase();
-            document.querySelectorAll('.dua-item').forEach(item => {
-                item.style.display = item.innerText.toLowerCase().includes(query) ? "block" : "none";
-            });
+        // جلب نص السورة كاملاً بالآيات من الـ API
+        function fetchFullSurah() {
+            const surahNum = document.getElementById('surahDropdown').value;
+            if(!surahNum) return;
+
+            document.getElementById('surahInfoTag').innerText = "جاري التحميل...";
+            document.getElementById('surahDisplayArea').innerText = "جاري جلب الآيات الكريمة...";
+
+            fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`)
+                .then(response => response.json())
+                .then(data => {
+                    const surah = data.data;
+                    document.getElementById('surahInfoTag').innerText = `سورة ${surah.name} (${surah.revelationType === 'Meccan' ? 'مكية' : 'مدنية'}) - ${surah.numberOfAyahs} آية`;
+                    
+                    let surahText = "";
+                    if(surah.number !== 1 && surah.number !== 9) {
+                        surahText += "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br><br>";
+                    }
+
+                    surah.ayahs.forEach(ayah => {
+                        let text = ayah.text;
+                        if(surah.number !== 1 && ayah.numberInSurah === 1) {
+                            text = text.replace("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", "").trim();
+                        }
+                        surahText += `${text} ﴿${ayah.numberInSurah}﴾ `;
+                    });
+
+                    document.getElementById('surahDisplayArea').innerHTML = surahText;
+                })
+                .catch(err => {
+                    document.getElementById('surahDisplayArea').innerText = "حدث خطأ أثناء تحميل السورة، يرجى التأكد من الاتصال بالإنترنت.";
+                });
         }
 
         function toggleSidebar() {
