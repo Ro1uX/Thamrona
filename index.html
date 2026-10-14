@@ -11,12 +11,12 @@
     
     <style>
         :root {
-            --bg-color: rgba(255, 255, 255, 0.94);
+            --bg-color: rgba(255, 255, 255, 0.92);
             --text-color: #0d0d0d;
-            --card-bg: rgba(255, 255, 255, 0.97);
-            --light-border: #d2d2d2;
-            --accent-gray: #4a4a4a;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --light-border: #c8c8c8;
+            --accent-gray: #333333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         * {
@@ -27,9 +27,9 @@
         }
 
         body {
-            /* خلفية مسجد فاخرة وواضحة بطبقة شفافة مريحة للعين */
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                        url('https://images.unsplash.com/photo-1542816417-0983cbe82752?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            /* خلفية مسجد فاخرة وواضحة جداً */
+            background: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), 
+                        url('https://images.pexels.com/photos/2233416/pexels-photo-2233416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-color);
             line-height: 1.9;
@@ -52,7 +52,7 @@
             position: sticky;
             top: 0;
             z-index: 900;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .nav-title {
@@ -89,6 +89,7 @@
             font-size: 1.5rem;
             color: var(--accent-gray);
             margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
 
         .logo {
@@ -97,13 +98,15 @@
             font-weight: 800;
             color: var(--text-color);
             line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.8);
         }
 
         .subtitle {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--accent-gray);
-            font-weight: 400;
+            font-weight: 600;
             margin-top: 6px;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
 
         .app-container {
@@ -119,6 +122,7 @@
             padding: 28px 22px;
             box-shadow: var(--shadow);
             margin-bottom: 25px;
+            backdrop-filter: blur(4px);
         }
 
         .shaheed-header {
@@ -276,6 +280,7 @@
             border-radius: 14px;
             padding: 22px;
             margin-bottom: 20px;
+            backdrop-filter: blur(4px);
         }
 
         .item-category {
@@ -445,12 +450,10 @@
                 <h2 class="section-title">📖 القرآن الكريم كاملاً (114 سورة)</h2>
             </div>
 
-            <!-- أذونة وحقل البحث عن السورة -->
             <input type="text" id="surahSearchInput" class="search-box" placeholder="🔍 اكتب اسم السورة للبحث السريع (مثلاً: يس، الملك، الكهف)..." onkeyup="filterSurahDropdown()">
 
             <label for="surahDropdown" style="font-size:0.9rem; font-weight:600; margin-bottom:6px; display:block;">اختر السورة لعرض آياتها كاملة:</label>
             <select id="surahDropdown" class="surah-select" onchange="fetchFullSurah()">
-                <!-- سيتم تحميل الـ 114 سورة تلقائياً بالكامل -->
             </select>
 
             <div class="item-card">
@@ -505,7 +508,7 @@
             </div>
         </div>
 
-        <!-- 4. قسم الأحاديث النبوية الشريفة (شامل ومفتوح كلياً بدون أذونة بحث) -->
+        <!-- 4. قسم الأحاديث النبوية الشريفة -->
         <div id="hadithTab" class="tab-content">
             <div class="section-header">
                 <h2 class="section-title">📜 الأحاديث النبوية الصحيحة</h2>
@@ -550,19 +553,8 @@
                     عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «أَكْمَلُ الْمُؤْمِنِينَ إِيمَانًا أَحْسَنُهُمْ خُلُقًا، وَخِيَارُكُمْ خِيَارُكُمْ لِنِسَائِهِمْ.»
                 </p>
                 <div class="card-footer">
-                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه الترمذي (حديث حسن صحيح)</span>
+                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه الترمذي</span>
                     <button class="btn-action" onclick="copyText('h4')">📋 نسخ الحديث</button>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <span class="item-category">جوامع الكلم والدعاء</span>
-                <p class="hadith-text" id="h5">
-                    عَنْ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا قَالَتْ: كَانَ رَسُولُ اللَّهِ ﷺ يَسْتَحِبُّ الْجَوَامِعَ مِنَ الدُّعَاءِ، وَيَدَعُ مَا سِوَى ذَلِكَ.
-                </p>
-                <div class="card-footer">
-                    <span style="font-size:0.8rem; color:var(--accent-gray);">رواه أبو داود</span>
-                    <button class="btn-action" onclick="copyText('h5')">📋 نسخ الحديث</button>
                 </div>
             </div>
         </div>
@@ -600,14 +592,13 @@
     <script>
         let allSurahsList = [];
 
-        // تحميل قائمة الـ 114 سورة بالكامل عند فتح الموقع
         window.onload = function() {
             fetch('https://api.alquran.cloud/v1/surah')
                 .then(response => response.json())
                 .then(data => {
                     allSurahsList = data.data;
                     populateSurahDropdown(allSurahsList);
-                    fetchFullSurah(); // تحميل السورة الأولى تلقائياً
+                    fetchFullSurah();
                 });
         };
 
@@ -622,7 +613,6 @@
             });
         }
 
-        // البحث الفوري في أسماء السور
         function filterSurahDropdown() {
             const query = document.getElementById('surahSearchInput').value.trim().toLowerCase();
             const filtered = allSurahsList.filter(surah => surah.name.toLowerCase().includes(query) || surah.number.toString() === query);
@@ -632,7 +622,6 @@
             }
         }
 
-        // جلب نص السورة كاملاً بالآيات من الـ API
         function fetchFullSurah() {
             const surahNum = document.getElementById('surahDropdown').value;
             if(!surahNum) return;
